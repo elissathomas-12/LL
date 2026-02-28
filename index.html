@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FratPass</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/192/00FF00/000000?text=FP">
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            color: white;
+            font-family: -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Pass View */
+        #pass-view {
+            background: #1c1c1e;
+            width: 85%;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .qr-box {
+            width: 200px;
+            height: 200px;
+            background: white;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        .redeem-btn {
+            background: #34c759;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Success View */
+        #success-view {
+            display: none;
+            text-align: center;
+        }
+
+        .check-mark {
+            font-size: 100px;
+            color: #34c759;
+            margin-bottom: 10px;
+            animation: scaleIn 0.4s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pass-view">
+        <h2 style="margin:0;">Friday Night Event</h2>
+        <p style="color: #8e8e93;">General Admission</p>
+        <div class="qr-box">SCAN ME</div>
+        <button class="redeem-btn" onclick="redeem()">REDEEM PASS</button>
+    </div>
+
+    <div id="success-view">
+        <div class="check-mark">✓</div>
+        <h1 style="margin:0;">REDEEMED</h1>
+        <p id="timestamp" style="color: #8e8e93;"></p>
+    </div>
+
+    <script>
+        function redeem() {
+            document.getElementById('pass-view').style.display = 'none';
+            document.getElementById('success-view').style.display = 'block';
+            
+            const now = new Date();
+            document.getElementById('timestamp').innerText = 
+                now.toLocaleDateString() + ' at ' + now.toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>
