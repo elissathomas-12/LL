@@ -2,104 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>FratPass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>LineLeap Clone</title>
     
-    <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="https://via.placeholder.com/192/00FF00/000000?text=FP">
-
+    
     <style>
+        :root {
+            --lineleap-green: #00FF41; /* The signature neon green */
+            --bg-black: #000000;
+            --card-grey: #121212;
+            --border-grey: #262626;
+        }
+
         body {
             margin: 0;
-            background-color: #000;
+            padding: 0;
+            background-color: var(--bg-black);
             color: white;
-            font-family: -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
+            justify-content: center;
+        }
+
+        /* The Pass Container */
+        #pass-container {
+            width: 90%;
+            max-width: 360px;
+            background: var(--card-grey);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-grey);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding-bottom: 25px;
+        }
+
+        .header-strip {
+            background: var(--lineleap-green);
+            height: 8px;
+            width: 100%;
+        }
+
+        .event-info {
+            padding: 25px 20px;
+        }
+
+        .frat-letters {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--lineleap-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .event-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* QR Code Section with Shimmer */
+        .qr-section {
+            background: white;
+            width: 240px;
+            height: 240px;
+            margin: 10px auto 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
         }
 
-        /* Pass View */
-        #pass-view {
-            background: #1c1c1e;
-            width: 85%;
-            padding: 30px;
-            border-radius: 25px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-
-        .qr-box {
+        .qr-placeholder {
             width: 200px;
             height: 200px;
-            background: white;
-            margin: 20px auto;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            font-weight: bold;
+            background-image: url('https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VALID_PASS_123');
+            background-size: cover;
         }
 
-        .redeem-btn {
-            background: #34c759;
-            color: white;
+        /* The "Security Shimmer" - Proof of Life */
+        .qr-section::after {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.6) 50%,
+                transparent 55%
+            );
+            animation: sweep 4s infinite;
+        }
+
+        @keyframes sweep {
+            0% { transform: translate(-10%, -10%); }
+            100% { transform: translate(10%, 10%); }
+        }
+
+        .redeem-button {
+            background-color: var(--lineleap-green);
+            color: black;
             border: none;
-            width: 100%;
+            width: 85%;
             padding: 18px;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 20px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .redeem-button:active {
+            transform: scale(0.95);
+            filter: brightness(0.8);
         }
 
         /* Success View */
-        #success-view {
+        #success-screen {
             display: none;
             text-align: center;
         }
 
-        .check-mark {
-            font-size: 100px;
-            color: #34c759;
-            margin-bottom: 10px;
-            animation: scaleIn 0.4s ease-out;
+        .green-check {
+            width: 120px;
+            height: 120px;
+            background: var(--lineleap-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes scaleIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        .check-mark {
+            color: black;
+            font-size: 70px;
+            font-weight: bold;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .timestamp {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div id="pass-view">
-        <h2 style="margin:0;">Friday Night Event</h2>
-        <p style="color: #8e8e93;">General Admission</p>
-        <div class="qr-box">SCAN ME</div>
-        <button class="redeem-btn" onclick="redeem()">REDEEM PASS</button>
+    <div id="pass-container">
+        <div class="header-strip"></div>
+        <div class="event-info">
+            <div class="frat-letters">Your Frat Letters Here</div>
+            <h1 class="event-title">EVENT PASS</h1>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-placeholder"></div>
+        </div>
+
+        <button class="redeem-button" onclick="showSuccess()">Redeem Pass</button>
     </div>
 
-    <div id="success-view">
-        <div class="check-mark">✓</div>
-        <h1 style="margin:0;">REDEEMED</h1>
-        <p id="timestamp" style="color: #8e8e93;"></p>
+    <div id="success-screen">
+        <div class="green-check">
+            <span class="check-mark">✓</span>
+        </div>
+        <h1 style="font-size: 32px; font-weight: 900; margin-bottom: 5px;">REDEEMED</h1>
+        <div class="timestamp" id="time-display"></div>
     </div>
 
     <script>
-        function redeem() {
-            document.getElementById('pass-view').style.display = 'none';
-            document.getElementById('success-view').style.display = 'block';
+        function showSuccess() {
+            document.getElementById('pass-container').style.display = 'none';
+            document.getElementById('success-screen').style.display = 'block';
             
             const now = new Date();
-            document.getElementById('timestamp').innerText = 
-                now.toLocaleDateString() + ' at ' + now.toLocaleTimeString();
+            document.getElementById('time-display').innerText = 
+                now.toLocaleDateString() + ' @ ' + now.toLocaleTimeString();
         }
     </script>
 </body>
