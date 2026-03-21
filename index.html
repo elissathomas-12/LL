@@ -94,21 +94,7 @@
             overflow: hidden;
         }
 
-        .qr-wrapper::after {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
-            animation: qrSweep 2.5s infinite;
-        }
-
-        @keyframes qrSweep {
-            0%   { transform: translate(-30%, -30%); }
-            100% { transform: translate(30%, 30%); }
-        }
-
-        .qr-wrapper img { width: 134px; height: 134px; object-fit: contain; }
+        .qr-wrapper img { width: 124px; height: 124px; object-fit: contain; }
 
         .card-footer { display: flex; justify-content: space-between; align-items: flex-end; }
 
@@ -281,14 +267,14 @@
     </div>
 
     <div class="pass-card">
-        <div class="card-venue">Your Venue Here</div>
+        <div class="card-venue">Centro Taco Bar</div>
         <div class="card-header">
             <div class="card-title" id="event-title">Cover (Sat, 21+)</div>
             <div class="card-qty">Qty: 1</div>
         </div>
 
         <div class="qr-wrapper">
-            <img src="qr.jpg" alt="QR Code">
+            <img src="qr.png" alt="QR Code">
         </div>
 
         <div class="card-footer">
