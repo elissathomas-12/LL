@@ -59,10 +59,10 @@
 
         /* Gold Pass Card */
         .pass-card {
-            margin: 0 16px 24px;
+            margin: 0 16px 14px;
             background: linear-gradient(135deg, var(--card-gold-light) 0%, var(--card-gold) 50%, var(--card-gold-dark) 100%);
             border-radius: 20px;
-            padding: 22px 22px 20px;
+            padding: 16px 18px 14px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 12px 40px rgba(201, 162, 39, 0.25);
@@ -99,7 +99,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
         }
 
         .card-title {
@@ -120,11 +120,11 @@
 
         .qr-wrapper {
             background: white;
-            border-radius: 16px;
-            padding: 12px;
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 18px;
+            border-radius: 12px;
+            padding: 8px;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -153,8 +153,8 @@
         }
 
         .qr-wrapper img {
-            width: 196px;
-            height: 196px;
+            width: 134px;
+            height: 134px;
         }
 
         .card-footer {
@@ -421,9 +421,9 @@
     </div>
 
     <div class="pass-card">
-        <div class="card-venue">Your Venue Here</div>
+        <div class="card-venue">Centro Taco Bar</div>
         <div class="card-header">
-            <div class="card-title">Cover (Fri, 21+)</div>
+            <div class="card-title" id="event-title">Cover (Sat, 21+)</div>
             <div class="card-qty">Qty: 1</div>
         </div>
 
@@ -515,6 +515,11 @@
 </nav>
 
 <script>
+    // Dynamic day abbreviation in card title
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const todayDay = days[new Date().getDay()];
+    document.getElementById('event-title').textContent = `Cover (${todayDay}, 21+)`;
+
     // Live clock
     function updateClock() {
         const now = new Date();
