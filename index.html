@@ -11,9 +11,9 @@
 
         :root {
             --bg: #1a1d26;
-            --card-gold: #c9a227;
-            --card-gold-light: #e8bc3a;
-            --card-gold-dark: #a8861e;
+            --card-gold-light: #e0ad1a;
+            --card-gold: #c89b10;
+            --card-gold-dark: #9a7608;
             --blue-btn: #3a6fd8;
             --grey-btn: #2e3344;
             --text-dim: #8a8fa8;
@@ -30,7 +30,6 @@
             flex-direction: column;
         }
 
-        /* ── PASS SCREEN ── */
         #pass-screen {
             display: flex;
             flex-direction: column;
@@ -45,40 +44,25 @@
             padding: 54px 20px 12px;
         }
 
-        .top-bar h1 {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+        .top-bar h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
 
-        .live-clock {
-            font-size: 13px;
-            color: var(--text-dim);
-            font-weight: 500;
-        }
+        .live-clock { font-size: 13px; color: var(--text-dim); font-weight: 500; }
 
-        /* Gold Pass Card */
         .pass-card {
             margin: 0 16px 14px;
             background: linear-gradient(135deg, var(--card-gold-light) 0%, var(--card-gold) 50%, var(--card-gold-dark) 100%);
             border-radius: 20px;
-            padding: 16px 18px 14px;
+            padding: 14px 18px 12px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.25);
+            box-shadow: 0 12px 40px rgba(201,162,39,0.3);
         }
 
-        /* Shimmer sweep on card */
         .pass-card::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                115deg,
-                transparent 30%,
-                rgba(255,255,255,0.18) 50%,
-                transparent 70%
-            );
+            background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
             animation: cardShimmer 3s infinite ease-in-out;
             border-radius: 20px;
         }
@@ -88,35 +72,13 @@
             100% { transform: translateX(100%); }
         }
 
-        .card-venue {
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 4px;
-        }
+        .card-venue { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
 
-        .card-title {
-            font-size: 26px;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-        }
+        .card-title { font-size: 26px; font-weight: 400; color: white; letter-spacing: -0.5px; line-height: 1.1; }
 
-        .card-qty {
-            font-size: 20px;
-            font-weight: 800;
-            color: rgba(255,255,255,0.85);
-            white-space: nowrap;
-            padding-top: 4px;
-        }
+        .card-qty { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; padding-top: 4px; }
 
         .qr-wrapper {
             background: white;
@@ -132,18 +94,12 @@
             overflow: hidden;
         }
 
-        /* QR shimmer */
         .qr-wrapper::after {
             content: "";
             position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 40%,
-                rgba(255,255,255,0.55) 50%,
-                transparent 60%
-            );
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
             animation: qrSweep 2.5s infinite;
         }
 
@@ -152,53 +108,20 @@
             100% { transform: translate(30%, 30%); }
         }
 
-        .qr-wrapper img {
-            width: 134px;
-            height: 134px;
-        }
+        .qr-wrapper img { width: 134px; height: 134px; object-fit: contain; }
 
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+        .card-footer { display: flex; justify-content: space-between; align-items: flex-end; }
 
-        .card-label {
-            font-size: 11px;
-            color: rgba(255,255,255,0.65);
-            margin-bottom: 2px;
-        }
+        .card-label { font-size: 11px; color: rgba(255,255,255,0.65); margin-bottom: 2px; }
 
-        .card-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-        }
+        .card-value { font-size: 16px; font-weight: 400; color: white; }
 
-        .card-logo {
-            font-size: 22px;
-            font-weight: 900;
-            color: rgba(255,255,255,0.7);
-            font-style: italic;
-        }
+        .card-logo { font-size: 22px; font-weight: 900; color: rgba(255,255,255,0.7); font-style: italic; }
 
-        /* Divider + instructions */
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 0 16px 20px;
-        }
+        .divider { height: 1px; background: var(--border); margin: 0 16px 20px; }
 
-        .instructions {
-            font-size: 18px;
-            font-weight: 500;
-            color: white;
-            line-height: 1.4;
-            padding: 0 20px;
-            margin-bottom: 16px;
-        }
+        .instructions { font-size: 18px; font-weight: 500; color: white; line-height: 1.4; padding: 0 20px; margin-bottom: 16px; }
 
-        /* Buttons */
         .btn-staff {
             display: block;
             width: calc(100% - 32px);
@@ -216,10 +139,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .btn-staff:active {
-            transform: scale(0.97);
-            filter: brightness(0.85);
-        }
+        .btn-staff:active { transform: scale(0.97); filter: brightness(0.85); }
 
         .btn-how {
             display: block;
@@ -238,16 +158,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .btn-how:active {
-            transform: scale(0.97);
-            filter: brightness(0.85);
-        }
+        .btn-how:active { transform: scale(0.97); filter: brightness(0.85); }
 
-        /* ── BOTTOM NAV ── */
         .bottom-nav {
             position: fixed;
-            bottom: 0;
-            left: 0; right: 0;
+            bottom: 0; left: 0; right: 0;
             background: var(--nav-bg);
             border-top: 1px solid var(--border);
             display: flex;
@@ -268,116 +183,6 @@
 
         .nav-item.active { color: white; }
 
-        .nav-icon {
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ── SUCCESS SCREEN ── */
-        #success-screen {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            background: var(--bg);
-            min-height: 100vh;
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-        }
-
-        .check-ring {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            margin-bottom: 32px;
-        }
-
-        /* SVG circle draw animation */
-        .ring-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-        }
-
-        .ring-track {
-            fill: none;
-            stroke: rgba(255,255,255,0.08);
-            stroke-width: 10;
-        }
-
-        .ring-progress {
-            fill: none;
-            stroke: white;
-            stroke-width: 10;
-            stroke-linecap: round;
-            stroke-dasharray: 628;
-            stroke-dashoffset: 628;
-            animation: drawRing 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
-        }
-
-        @keyframes drawRing {
-            to { stroke-dashoffset: 0; }
-        }
-
-        /* Check mark inside */
-        .check-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .check-svg {
-            width: 90px;
-            height: 90px;
-            opacity: 0;
-            animation: fadeScaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
-        }
-
-        .check-path {
-            fill: none;
-            stroke: white;
-            stroke-width: 8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 120;
-            stroke-dashoffset: 120;
-            animation: drawCheck 0.4s ease 1s forwards;
-        }
-
-        @keyframes fadeScaleIn {
-            from { opacity: 0; transform: scale(0.7); }
-            to   { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes drawCheck {
-            to { stroke-dashoffset: 0; }
-        }
-
-        .tagline {
-            font-size: 20px;
-            font-style: italic;
-            font-weight: 500;
-            color: var(--text-dim);
-            letter-spacing: 0.3px;
-            opacity: 0;
-            animation: fadeUp 0.6s ease 1.3s forwards;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Loading dots while "verifying" */
         #loading-screen {
             display: none;
             flex-direction: column;
@@ -399,21 +204,76 @@
             animation: spin 0.75s linear infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-text { color: var(--text-dim); font-size: 15px; font-weight: 500; }
+
+        #success-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            position: fixed;
+            inset: 0;
+            z-index: 100;
         }
 
-        .loading-text {
+        .check-ring { position: relative; width: 220px; height: 220px; margin-bottom: 32px; }
+
+        .ring-svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+
+        .ring-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 10; }
+
+        .ring-progress {
+            fill: none;
+            stroke: white;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 628;
+            stroke-dashoffset: 628;
+            animation: drawRing 0.9s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;
+        }
+
+        @keyframes drawRing { to { stroke-dashoffset: 0; } }
+
+        .check-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+        .check-svg {
+            width: 90px; height: 90px;
+            opacity: 0;
+            animation: fadeScaleIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) 0.8s forwards;
+        }
+
+        .check-path {
+            fill: none; stroke: white; stroke-width: 8;
+            stroke-linecap: round; stroke-linejoin: round;
+            stroke-dasharray: 120; stroke-dashoffset: 120;
+            animation: drawCheck 0.4s ease 1s forwards;
+        }
+
+        @keyframes fadeScaleIn {
+            from { opacity: 0; transform: scale(0.7); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+        .tagline {
+            font-size: 20px; font-style: italic; font-weight: 500;
             color: var(--text-dim);
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 1.3s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<!-- ── PASS SCREEN ── -->
 <div id="pass-screen">
     <div class="top-bar">
         <h1>My Passes</h1>
@@ -421,14 +281,14 @@
     </div>
 
     <div class="pass-card">
-        <div class="card-venue">Centro Taco Bar</div>
+        <div class="card-venue">Your Venue Here</div>
         <div class="card-header">
             <div class="card-title" id="event-title">Cover (Sat, 21+)</div>
             <div class="card-qty">Qty: 1</div>
         </div>
 
         <div class="qr-wrapper">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=196x196&data=ELISSA_PASS_2025&bgcolor=ffffff&color=000000&margin=0&ecc=L" alt="QR Code">
+            <img src="qr.png" alt="QR Code">
         </div>
 
         <div class="card-footer">
@@ -445,22 +305,18 @@
     </div>
 
     <div class="divider"></div>
-
-    <div style="flex: 1;"></div>
+    <div style="flex:1;"></div>
 
     <p class="instructions">Show pass to door staff to redeem. Only door staff should redeem.</p>
-
     <button class="btn-staff" onclick="startRedeem()">I am the bartender or venue staff</button>
     <button class="btn-how">How to redeem this pass</button>
 </div>
 
-<!-- ── LOADING SCREEN ── -->
 <div id="loading-screen">
     <div class="spinner-ring"></div>
     <div class="loading-text">Verifying pass…</div>
 </div>
 
-<!-- ── SUCCESS SCREEN ── -->
 <div id="success-screen">
     <div class="check-ring">
         <svg class="ring-svg" viewBox="0 0 220 220">
@@ -476,51 +332,26 @@
     <div class="tagline">Fun, Faster.</div>
 </div>
 
-<!-- ── BOTTOM NAV ── -->
 <nav class="bottom-nav">
     <div class="nav-item">
-        <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/>
-            </svg>
-        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
         Venues
     </div>
     <div class="nav-item active">
-        <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="2" y="3" width="8" height="18" rx="2"/>
-                <rect x="14" y="3" width="8" height="10" rx="2"/>
-                <rect x="14" y="17" width="8" height="4" rx="2"/>
-            </svg>
-        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="3" width="8" height="18" rx="2"/><rect x="14" y="3" width="8" height="10" rx="2"/><rect x="14" y="17" width="8" height="4" rx="2"/></svg>
         My Passes
     </div>
     <div class="nav-item">
-        <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/>
-            </svg>
-        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
         Drops
     </div>
     <div class="nav-item">
-        <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         Account
     </div>
 </nav>
 
 <script>
-    // Dynamic day abbreviation in card title
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const todayDay = days[new Date().getDay()];
-    document.getElementById('event-title').textContent = `Cover (${todayDay}, 21+)`;
-
-    // Live clock
     function updateClock() {
         const now = new Date();
         const month = now.toLocaleString('en-US', { month: 'short' });
@@ -532,29 +363,25 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    // Expiry: next 4am
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    document.getElementById('event-title').textContent = `Cover (${days[new Date().getDay()]}, 21+)`;
+
     function getExpiry() {
-        const now = new Date();
-        const exp = new Date(now);
+        const exp = new Date();
         exp.setDate(exp.getDate() + 1);
         exp.setHours(4, 0, 0, 0);
         return exp.toLocaleString('en-US', { month: 'short', day: 'numeric' }) + ', 4:00 AM';
     }
     document.getElementById('expiry-date').textContent = getExpiry();
 
-    // Redeem flow
     function startRedeem() {
-        // Show loading
         document.getElementById('pass-screen').style.display = 'none';
         document.getElementById('loading-screen').style.display = 'flex';
-
         setTimeout(() => {
             document.getElementById('loading-screen').style.display = 'none';
-
-            // Reset and show success (re-trigger animations)
-            const successEl = document.getElementById('success-screen');
-            successEl.innerHTML = successEl.innerHTML; // force reflow to restart animations
-            document.getElementById('success-screen').style.display = 'flex';
+            const s = document.getElementById('success-screen');
+            s.innerHTML = s.innerHTML;
+            s.style.display = 'flex';
         }, 1500);
     }
 </script>
